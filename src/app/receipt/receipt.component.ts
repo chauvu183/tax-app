@@ -54,7 +54,7 @@ export class ReceiptComponent {
   }
 
   roundToTwoDecimalPlaces(value:number){
-    return  parseFloat(value.toFixed(2))
+    return Math.round(value * 100) / 100;
   }
 
   addItem() {
