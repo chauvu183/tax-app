@@ -36,8 +36,7 @@ export class ReceiptComponent {
           tax += this.roundUp(price * this.basicTaxRate);
         }
         if (item.imported) {
-          const importedTax = this.roundUp(price * this.importedTaxRate);
-          tax = tax + importedTax;
+          tax += this.roundUp(price * this.importedTaxRate);
         }
 
         const itemPrice = price + tax;
@@ -46,12 +45,16 @@ export class ReceiptComponent {
         this.totalPrice += itemPrice;
       }
     }
-    console.log(this.totalPrice);
-    return {items: itemsList, salesTaxes: this.salesTaxes, total: this.roundUp(this.totalPrice)};
+
+    return {items: itemsList, salesTaxes: this.roundToTwoDecimalPlaces(this.salesTaxes), total: this.roundToTwoDecimalPlaces(this.totalPrice)};
   }
 
   roundUp(price: number): number {
     return Math.ceil(price * 20) / 20;
+  }
+
+  roundToTwoDecimalPlaces(value:number){
+    return  parseFloat(value.toFixed(2))
   }
 
   addItem() {
