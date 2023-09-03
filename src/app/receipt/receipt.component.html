@@ -1,1 +1,41 @@
-<p>receipt works!</p>
+<div class="receipt">
+  <h2>Receipt Details</h2>
+
+  <!-- Input form for user to add items -->
+  <div>
+    <label for="itemName">Item Name:</label>
+    <input type="text" id="itemName"/>
+  </div>
+
+  <div>
+    <label for="itemPrice">Item Price:</label>
+    <input type="number" id="itemPrice"/>
+  </div>
+
+  <div>
+    <label>Is Imported:</label>
+    <input type="radio" id="importedYes" name="imported" [value]="true"/>
+    <label for="importedYes">Yes</label>
+    <input type="radio" id="importedNo" name="imported" [value]="false"/>
+    <label for="importedNo">No</label>
+  </div>
+
+  <div>
+    <label>Is Exempt:</label>
+    <input type="radio" id="exemptYes" name="exempt" [value]="true"/>
+    <label for="exemptYes">Yes</label>
+    <input type="radio" id="exemptNo" name="exempt" [value]="false"/>
+    <label for="exemptNo">No</label>
+  </div>
+
+  <button>Add Item</button>
+  <button>Calculate Tax</button>
+
+  <!-- Display items and receipt details -->
+  <h3>Items:</h3>
+  <!--  <ul>
+      <li *ngFor="let item of taxedItemsList">{{ item.name }}: {{ item }}</li>
+    </ul>-->
+  <p>Sales Taxes: {{ salesTaxes }}</p>
+  <p>Total: {{ totalPrice }}</p>
+</div>
