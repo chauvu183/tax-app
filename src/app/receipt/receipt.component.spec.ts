@@ -21,9 +21,9 @@ describe('ReceiptComponent', () => {
 
   it('should calculate tax correctly for receipt 1', () => {
     const example1 = [
-      { name: 'book', quantity: 1, price: 12.49, imported: false, exception: false },
+      { name: 'book', quantity: 1, price: 12.49, imported: false, exception: true },
       { name: 'music CD', quantity: 1, price: 14.99, imported: false, exception: false },
-      { name: 'chocolate bar', quantity: 1, price: 0.85, imported: false, exception: false }
+      { name: 'chocolate bar', quantity: 1, price: 0.85, imported: false, exception: true }
     ]
     const result = component.calculateTax(example1);
 
