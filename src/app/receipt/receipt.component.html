@@ -1,18 +1,24 @@
 <div class="receipt-context">
-  <h2>Receipt Details</h2>
-  <app-add-item></app-add-item>
+  <app-add-item (newItem)="addItem($event)"></app-add-item>
 
   <!-- Display items and receipt details -->
   <div class="item-display">
-    <button type="submit">Calculate Tax</button>
     <h3>Item Details</h3>
     <ul class="item-info">
-      <li *ngFor="let item of taxedItemsList">
-        <p><strong>Item Name:</strong> {{ item.name }}</p>
-        <p><strong>Item Price:</strong> {{ item.priceWithTax | currency: 'USD' }}</p>
+      <li *ngFor="let item of itemList">
+        <p>{{item.quantity}} {{ item.name }} at {{ item.price * item.quantity | currency: 'EUR' }}</p>
       </li>
     </ul>
-    <p><strong>Sales Tax: </strong> {{ salesTaxes | currency: 'EU' }}</p>
-    <p><strong>Total Price: </strong> {{ totalPrice | currency: 'EU' }}</p>
+    <button type="submit" (click)="calculateTax()">Calculate Tax</button>
+    <div class="receipt-with-tax" *ngIf="taxedItemsList.length>0">
+      <h3>Item Details After Tax</h3>
+      <ul class="item-info">
+        <li *ngFor="let item of taxedItemsList">
+          <p>{{item.quantity}} {{ item.name }} at {{ item.priceWithTax | currency: 'EUR' }}</p>
+        </li>
+      </ul>
+      <p><strong>Sales Tax: </strong> {{ salesTaxes | currency: 'EUR' }}</p>
+      <p><strong>Total Price: </strong> {{ totalPrice | currency: 'EUR' }}</p>
+    </div>
   </div>
 </div>

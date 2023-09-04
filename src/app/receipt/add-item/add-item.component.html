@@ -6,10 +6,10 @@
       <input
         type="text"
         id="itemName"
-        name="itemName"
+        name="name"
         ngModel
         required
-        #itemName="ngModel"
+        #name="ngModel"
       />
     </div>
     <div class="form-group">
@@ -17,10 +17,21 @@
       <input
         type="number"
         id="itemPrice"
-        name="itemPrice"
+        name="price"
         ngModel
         required
-        #itemPrice="ngModel"
+        #price="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="itemQuantity">Item Quantity:</label>
+      <input
+        type="number"
+        id="itemQuantity"
+        name="quantity"
+        ngModel
+        required
+        #quantity="ngModel"
       />
     </div>
     <div class="form-group">
@@ -28,19 +39,19 @@
       <input
         type="checkbox"
         id="isImported"
-        name="isImported"
+        name="imported"
         ngModel
-        #isImported="ngModel"
+        #imported="ngModel"
       />
     </div>
     <div class="form-group">
       <label for="itemCategory">Item Category:</label>
       <select
         id="itemCategory"
-        name="itemCategory"
+        name="category"
         ngModel
         required
-        #itemCategory="ngModel"
+        #category="ngModel"
       >
         <option value="" disabled>Select an item category</option>
         <option *ngFor="let category of itemCategories" [value]="category">

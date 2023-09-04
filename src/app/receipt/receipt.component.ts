@@ -19,34 +19,36 @@ export class ReceiptComponent {
   importedTaxRate = 0.05;
   salesTaxes = 0;
   totalPrice = 0;
-
-  newItemName = '';
-  newItemPrice = 0;
-  isImported = false;
-
-  exceptionCategories = [Category.BOOK, Category.FOOD, Category.MEDICAL];
+  itemList: Item[] = [];
   taxedItemsList: Item[] = [];
+  exceptionCategories = [Category.BOOK, Category.FOOD, Category.MEDICAL];
 
-  calculateTax(input: Item[]): TaxItemList {
-    if (input) {
-      for (let item of input) {
-        const price = item.price;
-        const category = item.category;
-        let tax = 0;
-        if (!this.exceptionCategories.includes(<Category>category)) {
-          tax += this.roundUp(price * this.basicTaxRate);
-        }
-        if (item.imported) {
-          tax += this.roundUp(price * this.importedTaxRate);
-        }
-
-        const itemPrice = price + tax;
-        item.priceWithTax = this.roundUp(itemPrice);
-        this.salesTaxes += tax;
-        this.totalPrice += itemPrice;
-      }
-      this.taxedItemsList = input;
+  calculateTax(input?: any[]): TaxItemList {
+    if (!input) {
+      input = this.itemList;
     }
+
+    for (let item of input) {
+
+      if(item.quantity){item.quantity = 1}
+
+      const price = item.price * item.quantity;
+      const category = item.category;
+      let tax = 0;
+      if (!this.exceptionCategories.includes(<Category>category)) {
+        tax += this.roundUp(price * this.basicTaxRate);
+      }
+      if (item.imported) {
+        tax += this.roundUp(price * this.importedTaxRate);
+      }
+
+      const itemPrice = price + tax;
+      item.priceWithTax = this.roundUp(itemPrice);
+      this.salesTaxes += tax;
+      this.totalPrice += itemPrice;
+    }
+
+    this.taxedItemsList = input;
 
     return {
       items: this.taxedItemsList,
@@ -63,4 +65,7 @@ export class ReceiptComponent {
     return Math.round(value * 100) / 100;
   }
 
+  addItem(newItem: Item) {
+    this.itemList.push(newItem);
+  }
 }
