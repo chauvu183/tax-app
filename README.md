@@ -1,14 +1,31 @@
 # TaxApp
+This project is a simple Angular application that calculates sale taxes for purchased items based on predefined rules.
+The Tax Application is a web-based tool that calculates sales taxes for purchased items, taking into account basic sales tax, import duties, and exemptions for certain categories of goods. The application provides a receipt detailing the items, their prices (including tax), total cost, and total sales taxes paid.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+![Alt text](src/assets/img-tax-app.png?raw=true)
+
+## Prerequisites
+Before you begin, ensure you have the following prerequisites installed:
+
+## Installation
+1. Clone the repository to your local machine:
+```console
+git clone https://github.com/chauvu183/tax-app.git
+```
+2. Navigate to the project's root directory:
+```console
+cd tax-app
+```
+
+3. Install project dependencies:
+```console
+npm install
+```
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -17,11 +34,15 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Unit test](src/app/receipt/receipt.component.spec.ts) for the receipt component( test the desired output as suggested in the code assignment)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Features
+- User add new items to the receipt. 
+- Calculation of sales taxes for purchased items based on predefined rules.
+- Support for basic sales tax, import duties, and exemptions for specific categories( food, medical, book)
+- Detailed receipt generation with item names, prices (including tax), total cost, and total sales taxes paid.
+ 
+## Developement Process
+1. Write Tests with the desired results in the assignments.
+2. Build Receipt Component to execute the tax calculation, return the total tax amount and total price.
+3. Build template to interact with the user. User can add new items and calculate tax for his items
