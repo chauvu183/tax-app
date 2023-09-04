@@ -28,10 +28,11 @@ export class ReceiptComponent {
       input = this.itemList;
     }
 
-
     for (let item of input) {
 
-      if(!item.quantity){item.quantity = 1}
+      if (!item.quantity) {
+        item.quantity = 1
+      }
 
       const price = item.price * item.quantity;
       const category = item.category;
@@ -48,7 +49,6 @@ export class ReceiptComponent {
       this.salesTaxes += tax;
       this.totalPrice += itemPrice;
     }
-    console.log(input);
 
     this.taxedItemsList = input;
 

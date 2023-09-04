@@ -13,7 +13,7 @@ export class AddItemComponent {
 
   addItem(itemForm: any): void {
     if (itemForm.valid) {
-      if(!itemForm.value.imported){
+      if (!itemForm.value.imported) {
         itemForm.value.imported = false;
       }
       this.newItem.emit(itemForm.value);
