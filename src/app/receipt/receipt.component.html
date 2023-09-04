@@ -1,4 +1,4 @@
-<div class="receipt">
+<div class="container">
   <h2>Receipt Details</h2>
 
   <!-- Input form for user to add items -->
@@ -20,12 +20,13 @@
     <label for="importedNo">No</label>
   </div>
 
-  <div>
-    <label>Is Exempt:</label>
-    <input type="radio" id="exemptYes" name="exempt" [value]="true"/>
-    <label for="exemptYes">Yes</label>
-    <input type="radio" id="exemptNo" name="exempt" [value]="false"/>
-    <label for="exemptNo">No</label>
+  <div class="category-dropdown">
+    <label for="categorySelect">Select Item Category:</label>
+    <select id="categorySelect">
+      <option *ngFor="let category of itemCategories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
   </div>
 
   <button>Add Item</button>
