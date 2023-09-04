@@ -1,0 +1,53 @@
+<div class="add-item-form">
+  <h2>Add New Item</h2>
+  <form #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
+    <div class="form-group">
+      <label for="itemName">Item Name:</label>
+      <input
+        type="text"
+        id="itemName"
+        name="itemName"
+        ngModel
+        required
+        #itemName="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="itemPrice">Item Price:</label>
+      <input
+        type="number"
+        id="itemPrice"
+        name="itemPrice"
+        ngModel
+        required
+        #itemPrice="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="isImported">Imported Good:</label>
+      <input
+        type="checkbox"
+        id="isImported"
+        name="isImported"
+        ngModel
+        #isImported="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="itemCategory">Item Category:</label>
+      <select
+        id="itemCategory"
+        name="itemCategory"
+        ngModel
+        required
+        #itemCategory="ngModel"
+      >
+        <option value="" disabled>Select an item category</option>
+        <option *ngFor="let category of itemCategories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="!itemForm.valid">Add Item</button>
+  </form>
+</div>

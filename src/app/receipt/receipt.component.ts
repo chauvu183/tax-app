@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Category} from "../models/category";
+import {Item} from "../models/item";
 
 interface TaxItemList {
   items: any[],
@@ -24,15 +25,15 @@ export class ReceiptComponent {
   isImported = false;
 
   exceptionCategories = [Category.BOOK, Category.FOOD, Category.MEDICAL];
-  itemCategories: Category[] = Object.values(Category);
+  taxedItemsList: Item[] = [];
 
-  calculateTax(input: any[]): TaxItemList {
+  calculateTax(input: Item[]): TaxItemList {
     if (input) {
       for (let item of input) {
         const price = item.price;
         const category = item.category;
         let tax = 0;
-        if (!this.exceptionCategories.includes(category)) {
+        if (!this.exceptionCategories.includes(<Category>category)) {
           tax += this.roundUp(price * this.basicTaxRate);
         }
         if (item.imported) {
@@ -44,10 +45,11 @@ export class ReceiptComponent {
         this.salesTaxes += tax;
         this.totalPrice += itemPrice;
       }
+      this.taxedItemsList = input;
     }
 
     return {
-      items: input,
+      items: this.taxedItemsList,
       salesTaxes: this.roundToTwoDecimalPlaces(this.salesTaxes),
       total: this.roundToTwoDecimalPlaces(this.totalPrice)
     };

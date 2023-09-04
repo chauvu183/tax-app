@@ -4,15 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReceiptComponent } from './receipt/receipt.component';
+import { AddItemComponent } from './receipt/add-item/add-item.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReceiptComponent
+    ReceiptComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
