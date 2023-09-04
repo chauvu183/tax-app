@@ -1,6 +1,10 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReceiptComponent} from './receipt.component';
 import {Category} from "../models/category";
+import {NO_ERRORS_SCHEMA} from "@angular/compiler";
+import {AddItemComponent} from "./add-item/add-item.component";
+import {FormsModule} from "@angular/forms";
+import { MockComponent } from 'ng-mocks';
 
 describe('ReceiptComponent', () => {
   let component: ReceiptComponent;
@@ -8,7 +12,9 @@ describe('ReceiptComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ReceiptComponent]
+      declarations: [ReceiptComponent, MockComponent(AddItemComponent)],
+      imports: [ FormsModule ],
+      schemas: [NO_ERRORS_SCHEMA],
     });
     fixture = TestBed.createComponent(ReceiptComponent);
     component = fixture.componentInstance;
