@@ -3,7 +3,7 @@ This project is a simple Angular application that calculates sale taxes for purc
 The Tax Application is a web-based tool that calculates sales taxes for purchased items, taking into account basic sales tax, import duties, and exemptions for certain categories of goods. The application provides a receipt detailing the items, their prices (including tax), total cost, and total sales taxes paid.
 
 ![Alt text](src/assets/img-tax-app.png?raw=true)
-
+[tax-app.mp4](src%2Fassets%2Ftax-app.mp4)
 ## Prerequisites
 Before you begin, ensure you have the following prerequisites installed:
 
@@ -46,3 +46,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 1. Write Tests with the desired results in the assignments.
 2. Build Receipt Component to execute the tax calculation, return the total tax amount and total price.
 3. Build template to interact with the user. User can add new items and calculate tax for his items
+4. Build AddItem Component to get user input and display the new added Items
+5. Apply the tax calculation function on new added Items
+
+# UML
+![Screenshot 2023-09-05 100424.png](src%2Fassets%2FScreenshot%202023-09-05%20100424.png)
